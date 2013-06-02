@@ -1,0 +1,117 @@
+{
+  "description": "",
+  "durationSec": 0.101,
+  "specs": [],
+  "suites": [
+    {
+      "description": "Suite 1",
+      "durationSec": 0.101,
+      "specs": [],
+      "suites": [
+        {
+          "description": "Sub suite 1.1",
+          "durationSec": 0,
+          "specs": [
+            {
+              "description": "is true",
+              "durationSec": 0,
+              "passed": true
+            }
+          ],
+          "suites": [],
+          "passed": true
+        },
+        {
+          "description": "Sub suite 1.2",
+          "durationSec": 0.101,
+          "specs": [
+            {
+              "description": "is true 2",
+              "durationSec": 0,
+              "passed": true
+            },
+            {
+              "description": "is true 3",
+              "durationSec": 0,
+              "passed": true
+            },
+            {
+              "description": "is true 4 slow",
+              "durationSec": 0.101,
+              "passed": true
+            }
+          ],
+          "suites": [],
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "description": "Suite 2",
+      "durationSec": 0,
+      "specs": [],
+      "suites": [
+        {
+          "description": "Sub suite 2.1",
+          "durationSec": 0,
+          "specs": [
+            {
+              "description": "is true",
+              "durationSec": 0,
+              "passed": true
+            }
+          ],
+          "suites": [],
+          "passed": true
+        },
+        {
+          "description": "Sub suite 2.2",
+          "durationSec": 0,
+          "specs": [
+            {
+              "description": "is true 2",
+              "durationSec": 0,
+              "passed": true
+            },
+            {
+              "description": "is false 3",
+              "durationSec": 0,
+              "passed": false
+            }
+          ],
+          "suites": [],
+          "passed": false
+        }
+      ],
+      "passed": false
+    },
+    {
+      "description": "Suite 3",
+      "durationSec": 0,
+      "specs": [],
+      "suites": [
+        {
+          "description": "Sub suite 3.1",
+          "durationSec": 0,
+          "specs": [
+            {
+              "description": "is false",
+              "durationSec": 0,
+              "passed": false
+            },
+            {
+              "description": "is false 2",
+              "durationSec": 0,
+              "passed": false
+            }
+          ],
+          "suites": [],
+          "passed": false
+        }
+      ],
+      "passed": false
+    }
+  ],
+  "passed": false
+}

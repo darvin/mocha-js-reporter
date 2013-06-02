@@ -1,9 +1,9 @@
 {
-    "name": "mocha-lcov-reporter",
-    "description": "LCOV reporter for Mocha",
+    "name": "mocha-js-reporter",
+    "description": "JS runtime reporter for Mocha",
     "version": "0.0.1",
-    "author": "Steven Looman <steven.looman@gmail.com>",
-    "keywords": [ "mocha", "reporter", "lcov", "coverage" ],
+    "author": "Sergey Klimov <sergey.v.klimov@gmail.com>",
+    "keywords": [ "mocha", "reporter", "js", "runtime", "jasmine", "webdriver" ],
     "licenses" : [
         {
             "type": "2-clause BSD",
@@ -14,16 +14,16 @@
     "dependencies": {
     },
     "devDependencies": {
+        "tape":"*",
+        "mocha": "*"
     },
-    "directories": {
-        "lib": "./lib"
-    },
-    "main": "index.js",
+    "main": "mocha-js-reporter.js",
     "engines": { "node": ">= 0.6.0" },
     "scripts": {
+        "test": "test/test.js"
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/StevenLooman/mocha-lcov-reporter.git"
+        "url": "git://github.com/darvin/mocha-js-reporter.git"
     }
 }
