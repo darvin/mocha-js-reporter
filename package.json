@@ -25,5 +25,10 @@
     "repository": {
         "type": "git",
         "url": "git://github.com/darvin/mocha-js-reporter.git"
+    },
+    "testling": {
+        "files": "test/test.js",
+        "browsers": [ "chrome/20" ]
     }
+
 }

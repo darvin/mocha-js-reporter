@@ -1,46 +1,66 @@
-mocha-lcov-reporter
+mocha-js-reporter
 ===================
 
-LCOV reporter for Mocha.
+JS runtime reporter for Mocha.
 
-LCOV format can be found in this [geninfo manpage](http://ltp.sourceforge.net/coverage/lcov/geninfo.1.php). This LCOV reporter was built after [Sonar Javascript Plugin LCOVParser class](https://github.com/SonarCommunity/sonar-javascript/blob/master/sonar-javascript-plugin/src/main/java/org/sonar/plugins/javascript/lcov/LCOVParser.java).
+Runtime reporter for Mocha in [Jasmine JS-Reporter](https://github.com/detro/jasmine-jsreporter) format. 
 
-Usage
-=====
 
-The mocha-lcov-reporter is a reporter for mocha. In order to get coverage data, the same instructions are to be followed as for the JSONCov and HTMLCov reporters:
+This is a Mocha reporter, designed to simplify the extraction of test results from the Page.
+It's tailored with _Test Reporting Automation_ in mind.
 
-- Install [node-jscoverage](https://github.com/visionmedia/node-jscoverage)
-- Instrument your library with node-jscoverage
-- Run your tests against your instrumented libraray and save the output
+Ideal scenario of use are:
 
-For example, the following script can be part of your build process:
+* Use Selenium Web Driver to extract the result out of the page
+* Use PhantomJS to do... well, the same as above
+* Every time you wish Jasmine produced a JSON to report about the tests
 
+## What does it do?
+
+The Reporter awaits for all the Test to finish, than produces a report that can be retrieved with
+
+```javascript
+var JSONReport = mocha.getJSReport ();
 ```
-#!/usr/bin/env bash
-rm -rf coverage
-rm -rf lib-cov
+and looks like the following:
 
-mkdir coverage
-
-node-jscoverage lib lib-cov
-mv lib lib-orig
-mv lib-cov lib
-mocha -R mocha-lcov-reporter > coverage/coverage.lcov
-rm -rf lib
-mv lib-orig lib
+```JSON
+{
+    "suites": [
+        {
+            "description": "Simple test that checks the obvious regarding Truthy-ness and Falsy-ness",
+            "durationSec": 0.005,
+            "specs": [
+                {
+                    "description": "should report that a number is truthy, if different than '0', falsy otherwise",
+                    "durationSec": 0.004,
+                    "passed": true,
+                    "skipped": false,
+                },
+                // ... more specs here...
+            ],
+            "suites": [],
+            "passed": true
+        }
+    ],
+    "durationSec": 0.005,
+    "passed": true
+}
 ```
 
-This script instruments your library (library 'lib', target 'lib-cov'), temporarily replaces your library by the instrumented version, run the tests and undo the replacing of the original library by the instrumented library.
+After that, you can just extract it from the page.
 
-A safer and better approach is to coverage your library, and include the directory with the instrumented code from your tests directly. Instead of doing a 'require("../lib")' do a 'require("../lib-cov")'. This saves the hassle of replacing directory 'lib' with directory 'lib-cov' and undoing it afterwards. You can set an environment variable to check if the instrumented library should be included or the normal version:
+## How do I download it and check it works
 
-```
-var lib = process.env.JSCOV ? require('../lib-cov') : require('../lib');
-```
+1. Download the code:
+    * `git clone http://github.com/darvin/mocha-js-reporter.git`
+2. Include the reporter in your page running Jasmine tests with something like:
+    * `<script src="path/to/mocha-js-reporter.js" type="text/javascript"></script>`
+3. Open your [WebInspector](http://trac.webkit.org/wiki/WebInspector), [Firebug](http://getfirebug.com/) or whatever you use
+4. On the console, type:
+    * `mocha.getJSReport ()`
+5. Check that you get an Object back (should look like the above one)
+6. You are done!
 
-And run mocha as follows:
+Now you can setup your Test Infrastructure to _extract test results from the test page_, in the same way I just showed you.
 
-```
-JSCOV=1 mocha -R mocha-lcov-reporter > coverage/coverage.lcov
-```
