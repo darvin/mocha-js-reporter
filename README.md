@@ -1,3 +1,6 @@
+[![browser support](https://ci.testling.com/darvin/mocha-js-reporter.png)](https://ci.testling.com/darvin/mocha-js-reporter)
+[![Build Status](https://travis-ci.org/darvin/mocha-js-reporter.png?branch=master)](https://travis-ci.org/darvin/mocha-js-reporter)
+
 mocha-js-reporter
 ===================
 
